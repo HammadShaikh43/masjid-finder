@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a75e5a6ad27f3efab791324ebb557b06 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-dvf/0.3.0/leaflet-dvf.markers.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_a75e5a6ad27f3efab791324ebb557b06" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a75e5a6ad27f3efab791324ebb557b06 = L.map(
+                "map_a75e5a6ad27f3efab791324ebb557b06",
+                {
+                    center: [24.7936, 67.0555],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 17,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f9d650a6b6147dd843ebb22e5b3e4a3d = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_f9d650a6b6147dd843ebb22e5b3e4a3d.addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var poly_line_fcd780f57e303812c743400a981c5f16 = L.polyline(
+                [[24.7936, 67.0555], [24.79356353555626, 67.05450066504896]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var regular_polygon_marker_940b45b81284f995e62b17cb7bd2b0a1 = new L.RegularPolygonMarker(
+                [24.79356353555626, 67.05450066504896],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "numberOfSides": 3, "opacity": 1.0, "radius": 10, "rotation": 287.91027799498573, "stroke": true, "weight": 10}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+                function newMarker(e){
+                    var new_mark = L.marker().setLatLng(e.latlng).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+                    new_mark.dragging.enable();
+                    new_mark.on('dblclick', function(e){ map_a75e5a6ad27f3efab791324ebb557b06.removeLayer(e.target)})
+                    var lat = e.latlng.lat.toFixed(4),
+                       lng = e.latlng.lng.toFixed(4);
+                    new_mark.bindPopup("Latitude: " + lat + "<br>Longitude: " + lng );
+                    };
+                map_a75e5a6ad27f3efab791324ebb557b06.on('click', newMarker);
+            
+    
+                var lat_lng_popup_e8939e3e6e5e030284df7e91bdfe768c = L.popup();
+                function latLngPop(e) {
+                    lat_lng_popup_e8939e3e6e5e030284df7e91bdfe768c
+                        .setLatLng(e.latlng)
+                        .setContent("Latitude: " + e.latlng.lat.toFixed(4) +
+                                    "<br>Longitude: " + e.latlng.lng.toFixed(4))
+                        .openOn(map_a75e5a6ad27f3efab791324ebb557b06);
+                    }
+                map_a75e5a6ad27f3efab791324ebb557b06.on('click', latLngPop);
+            
+    
+            var marker_3d69280bd65d6cdfa28edd57bcaee57d = L.marker(
+                [24.7936, 67.0555],
+                {}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var icon_dd7b0b6f8e282092dfd7c7715be0d51a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_3d69280bd65d6cdfa28edd57bcaee57d.setIcon(icon_dd7b0b6f8e282092dfd7c7715be0d51a);
+        
+    
+        var popup_cb9209d8d231317365d577a66da29aa2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_03de760326a7fba6fd846aab8ed8a984 = $(`<div id="html_03de760326a7fba6fd846aab8ed8a984" style="width: 100.0%; height: 100.0%;">Current Location</div>`)[0];
+                popup_cb9209d8d231317365d577a66da29aa2.setContent(html_03de760326a7fba6fd846aab8ed8a984);
+            
+        
+
+        marker_3d69280bd65d6cdfa28edd57bcaee57d.bindPopup(popup_cb9209d8d231317365d577a66da29aa2)
+        ;
+
+        
+    
+    
+            var marker_9dd6a39d39533884609e2d477716016f = L.marker(
+                [24.791995666634477, 67.05737581485833],
+                {}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var icon_53e3cd493a25de6dfafae0afb01cbf50 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_9dd6a39d39533884609e2d477716016f.setIcon(icon_53e3cd493a25de6dfafae0afb01cbf50);
+        
+    
+        var popup_8001d14ae4f462ba2356ef72f97c850b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ac205e08fe9a89674d2f7ab85e8fde86 = $(`<div id="html_ac205e08fe9a89674d2f7ab85e8fde86" style="width: 100.0%; height: 100.0%;">Closest Node: 26th Street, Khayaban e Muhafiz Intersection</div>`)[0];
+                popup_8001d14ae4f462ba2356ef72f97c850b.setContent(html_ac205e08fe9a89674d2f7ab85e8fde86);
+            
+        
+
+        marker_9dd6a39d39533884609e2d477716016f.bindPopup(popup_8001d14ae4f462ba2356ef72f97c850b)
+        ;
+
+        
+    
+    
+            var poly_line_a46466c982e52a92389b15c51dfa6278 = L.polyline(
+                [[24.7936, 67.0555], [24.791995666634477, 67.05737581485833]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var marker_f7367e04b2d4295d251d35764b4213ef = L.marker(
+                [24.791995666634477, 67.05737581485833],
+                {}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var icon_98189a27e68aa1be5ee9b5d8cbf1e2a2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_f7367e04b2d4295d251d35764b4213ef.setIcon(icon_98189a27e68aa1be5ee9b5d8cbf1e2a2);
+        
+    
+        var popup_3e0b773e85a1dc6619513fbaa9643f9c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6ab0603f12ec06c92c6b6bcd49c3d583 = $(`<div id="html_6ab0603f12ec06c92c6b6bcd49c3d583" style="width: 100.0%; height: 100.0%;">26th Street, Khayaban e Muhafiz Intersection</div>`)[0];
+                popup_3e0b773e85a1dc6619513fbaa9643f9c.setContent(html_6ab0603f12ec06c92c6b6bcd49c3d583);
+            
+        
+
+        marker_f7367e04b2d4295d251d35764b4213ef.bindPopup(popup_3e0b773e85a1dc6619513fbaa9643f9c)
+        ;
+
+        
+    
+    
+            var poly_line_213c0eebc2702358741e3e827f83f7c0 = L.polyline(
+                [[24.791995666634477, 67.05737581485833], [24.791995666634477, 67.05737581485833]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var marker_070ccec0579b2dd383aef162fb6829e2 = L.marker(
+                [24.788729041473413, 67.05424557591148],
+                {}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var icon_f0dd4aa32bbad3826ce543f0731056a3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_070ccec0579b2dd383aef162fb6829e2.setIcon(icon_f0dd4aa32bbad3826ce543f0731056a3);
+        
+    
+        var popup_0a6bda885d117138c8aca9676e5360af = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b79053cb24b58069b96d0307bce88ccb = $(`<div id="html_b79053cb24b58069b96d0307bce88ccb" style="width: 100.0%; height: 100.0%;">Saba Avenue, Khayaban e Muhafiz Intersection</div>`)[0];
+                popup_0a6bda885d117138c8aca9676e5360af.setContent(html_b79053cb24b58069b96d0307bce88ccb);
+            
+        
+
+        marker_070ccec0579b2dd383aef162fb6829e2.bindPopup(popup_0a6bda885d117138c8aca9676e5360af)
+        ;
+
+        
+    
+    
+            var poly_line_538c6e591b43e625eef03e41fdf162e0 = L.polyline(
+                [[24.791995666634477, 67.05737581485833], [24.788729041473413, 67.05424557591148]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var marker_503f2cbd0cd6efa5427f0da15ccef66b = L.marker(
+                [24.791010419533517, 67.05133362089573],
+                {}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var icon_3ae58740ffab8bc974e45a8036bcf8e8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_503f2cbd0cd6efa5427f0da15ccef66b.setIcon(icon_3ae58740ffab8bc974e45a8036bcf8e8);
+        
+    
+        var popup_6a724113eae2ec9475e666d7a6d1784f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e24576807aafb672cd360750fc15ba7f = $(`<div id="html_e24576807aafb672cd360750fc15ba7f" style="width: 100.0%; height: 100.0%;">Saba Avenue, Khayaban e Rahat Intersection</div>`)[0];
+                popup_6a724113eae2ec9475e666d7a6d1784f.setContent(html_e24576807aafb672cd360750fc15ba7f);
+            
+        
+
+        marker_503f2cbd0cd6efa5427f0da15ccef66b.bindPopup(popup_6a724113eae2ec9475e666d7a6d1784f)
+        ;
+
+        
+    
+    
+            var poly_line_6a2bd7d6400b6fe06cd60f026eb92d96 = L.polyline(
+                [[24.788729041473413, 67.05424557591148], [24.791010419533517, 67.05133362089573]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var marker_83e26f56722339c5b4700701a1044f83 = L.marker(
+                [24.788781896774264, 67.0492575529317],
+                {}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var icon_558819e75323615394c819a596c47ea9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_83e26f56722339c5b4700701a1044f83.setIcon(icon_558819e75323615394c819a596c47ea9);
+        
+    
+        var popup_8e47b166c420ce4aa229715229cd0fdc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_49179cb97775e034d072286da2ea839c = $(`<div id="html_49179cb97775e034d072286da2ea839c" style="width: 100.0%; height: 100.0%;">34th Street, Khayaban e Rahat Intersection</div>`)[0];
+                popup_8e47b166c420ce4aa229715229cd0fdc.setContent(html_49179cb97775e034d072286da2ea839c);
+            
+        
+
+        marker_83e26f56722339c5b4700701a1044f83.bindPopup(popup_8e47b166c420ce4aa229715229cd0fdc)
+        ;
+
+        
+    
+    
+            var poly_line_d394265d3c137fdee96c2d8b4ceb71fd = L.polyline(
+                [[24.791010419533517, 67.05133362089573], [24.788781896774264, 67.0492575529317]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var marker_411adce36f31c2dbe409e2bf6e02d83f = L.marker(
+                [24.788563291096683, 67.04954552477592],
+                {}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+    
+            var icon_3203a0cc040828d2ee2fcdbbafefd083 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_411adce36f31c2dbe409e2bf6e02d83f.setIcon(icon_3203a0cc040828d2ee2fcdbbafefd083);
+        
+    
+        var popup_b1a9b5614882eb39fe7205b7989776c0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2cc1e96c5a3e3a567a174f181a875aed = $(`<div id="html_2cc1e96c5a3e3a567a174f181a875aed" style="width: 100.0%; height: 100.0%;">Masjid Jamia-ul-Quran</div>`)[0];
+                popup_b1a9b5614882eb39fe7205b7989776c0.setContent(html_2cc1e96c5a3e3a567a174f181a875aed);
+            
+        
+
+        marker_411adce36f31c2dbe409e2bf6e02d83f.bindPopup(popup_b1a9b5614882eb39fe7205b7989776c0)
+        ;
+
+        
+    
+    
+            var poly_line_a2a3b8b8959ab7cfdbd124db3824a42e = L.polyline(
+                [[24.788781896774264, 67.0492575529317], [24.788563291096683, 67.04954552477592]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 2.5}
+            ).addTo(map_a75e5a6ad27f3efab791324ebb557b06);
+        
+</script>
+</html>
